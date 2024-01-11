@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class JournalService {
@@ -40,5 +42,13 @@ public class JournalService {
         }
 
         return result;
+    }
+
+    public JournalResponseDTO findById(UUID id) {
+
+        Optional<Journal> journalOptional = repository.findById(id);
+
+        return journalOptional.map(journal -> modelMapper.map(journal, JournalResponseDTO.class)).orElse(null);
+
     }
 }
