@@ -1,12 +1,16 @@
 package com.ms.journal.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "journal")
+@Table(name = "tb_journal")
+@Getter
+@Setter
 public class Journal implements Serializable {
 
     @Id
@@ -24,46 +28,6 @@ public class Journal implements Serializable {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
-        this.text = text;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Long getDia() {
-        return dia;
-    }
-
-    public void setDia(Long dia) {
-        this.dia = dia;
-    }
-
-    public Long getMes() {
-        return mes;
-    }
-
-    public void setMes(Long mes) {
-        this.mes = mes;
-    }
-
-    public Long getAno() {
-        return ano;
-    }
-
-    public void setAno(Long ano) {
-        this.ano = ano;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
         this.text = text;
     }
 }
