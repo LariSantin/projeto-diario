@@ -24,11 +24,12 @@ public class UserService {
 
     public UserResponseDTO createUser(UserRequestDTO request){
 
-        String passwordEncode = bCrypt.encode(request.getPassword());
+
+        String passwordEncode = bCrypt.encode(request.password());
 
         User save = repository.save(new User(
-                request.getName(),
-                request.getEmail(),
+                request.name(),
+                request.email(),
                 passwordEncode)
         );
 
@@ -40,7 +41,7 @@ public class UserService {
 
         User user = repository.findByEmail(email);
 
-        return modelMapper.map(user, UserResponseDTO.class);
+        return new UserResponseDTO(user);
     }
 
 }

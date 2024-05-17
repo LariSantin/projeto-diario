@@ -17,12 +17,12 @@ public class UserResource {
     @Autowired
     private UserService service;
 
-
     @PostMapping
     public ResponseEntity<UserResponseDTO> createJournal(@RequestBody UserRequestDTO request){
         return ResponseEntity.ok(service.createUser(request));
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/search")
     public ResponseEntity<UserResponseDTO> findByEmail(@PathVariable String email){
         return ResponseEntity.ok(service.findByEmail(email));

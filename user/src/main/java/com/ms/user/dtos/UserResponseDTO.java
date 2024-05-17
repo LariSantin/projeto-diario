@@ -1,25 +1,11 @@
 package com.ms.user.dtos;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.ms.user.entities.User;
 
 import java.util.UUID;
 
-@Getter
-@Setter
-public class UserResponseDTO {
-
-
-    private UUID id;
-    private String email;
-    private String name;
-
-    public UserResponseDTO() {
-    }
-
-    public UserResponseDTO(UUID id, String email, String name) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
+public record UserResponseDTO(UUID id, String email, String name)  {
+    public UserResponseDTO (User user){
+        this(user.getId(), user.getEmail(), user.getEmail());
     }
 }
